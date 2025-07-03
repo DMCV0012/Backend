@@ -7,11 +7,11 @@ export class Grade {
   @Expose()
   grade_id: number; 
 
-  @Column({ type: 'int', name: 'student_rude_fk'})
+  @Column({ type: 'bigint', name: 'student_rude_fk' })
   @Expose()
-  student_rude_fk: number; 
+  student_rude_fk: number;
 
-  @Column({ type: 'int', name: 'class_id_fk' }) 
+  @Column({ type: 'bigint', name: 'class_id_fk' })
   @Expose()
   class_id_fk: number;
 
@@ -19,7 +19,7 @@ export class Grade {
   @Expose()
   score: number;
 
-  @CreateDateColumn({ type: 'timestamptz', name: 'grade_date' })
+  @Column({ type: 'date', name: 'grade_date', default: () => 'CURRENT_DATE' })
   @Expose()
   grade_date: Date;
 

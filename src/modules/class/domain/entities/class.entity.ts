@@ -7,25 +7,25 @@ export class Class {
   @Expose()
   class_id: number;
 
-  @Column({ type: 'int', name: 'subject_id_fk', nullable: false })
+  @Column({ type: 'bigint', name: 'teacher_ci_fk', nullable: false })
+  @Expose()
+  teacher_ci_fk: number;
+
+  @Column({ type: 'bigint', name: 'subject_id_fk', nullable: false })
   @Expose()
   subject_id_fk: number;
 
-  @Column({ type: 'int', name: 'teacher_ci_fk', nullable: false })
+  @Column({ type: 'bigint', name: 'course_id_fk', nullable: false })
   @Expose()
-  teacher_ci_fk: number; 
+  course_id_fk: number;
 
-  @Column({ type: 'int', name: 'course_id_fk', nullable: false })
+  @Column({ type: 'time', name: 'start_time', nullable: true })
   @Expose()
-  course_id_fk: number; 
+  start_time: string;
 
-  @Column({ type: 'time', name: 'start_time'})
+  @Column({ type: 'time', name: 'end_time', nullable: true })
   @Expose()
-  start_time: Date; 
-
-  @Column({ type: 'time', name: 'end_time'})
-  @Expose()
-  end_time: Date; 
+  end_time: string;
 
   @Column ({ type: 'text', name: 'day_of_week'})
   @Expose()

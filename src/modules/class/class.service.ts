@@ -19,15 +19,15 @@ export class ClassService {
    * @returns La clase recién creada.
    */
   async create(createClassDto: CreateClassDto): Promise<Class> {
-    const classEntity = this.classRepository.create({
-      subject_id_fk: createClassDto.subject_id_fk,
-      teacher_ci_fk: createClassDto.teacher_ci_fk,
-      course_id_fk: createClassDto.course_id_fk,
-      start_time: createClassDto.start_time,
-      end_time: createClassDto.end_time,
-      day_of_week: createClassDto.day_of_week,
-      academic_year: createClassDto.academic_year,
-    });
+    const classEntity = new Class();
+    classEntity.subject_id_fk = createClassDto.subject_id_fk;
+    classEntity.teacher_ci_fk = createClassDto.teacher_ci_fk;
+    classEntity.course_id_fk = createClassDto.course_id_fk;
+    classEntity.start_time = createClassDto.start_time; // Debe ser string tipo '08:00:00'
+    classEntity.end_time = createClassDto.end_time;     // Debe ser string tipo '09:00:00'
+    classEntity.day_of_week = createClassDto.day_of_week;
+    classEntity.academic_year = createClassDto.academic_year;
+
     return await this.classRepository.save(classEntity);
   }
 

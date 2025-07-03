@@ -16,7 +16,7 @@ export class Subject {
   @Expose()
   description: string; // descripción de la materia
 
-  @Column({ type: 'text', name: 'credits' })
+  @Column({ type: 'int', name: 'credits' })
   @Expose()
   credits: number; // créditos de la materia
 }

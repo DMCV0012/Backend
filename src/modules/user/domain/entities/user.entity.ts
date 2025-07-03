@@ -22,9 +22,9 @@ export class User {
   @Expose()
   email: string;
 
-  @Column({ type: 'text', name: 'role_user' })
+  @Column({ type: 'bigint', name: 'role_id', nullable: true })
   @Expose()
-  role_user: string; // 'Administrador', 'Profesor', 'Alumno', 'Secretaria'
+  role_id: number;
 
   @Column({ type: 'boolean', name: 'active', default: true })
   @Expose()

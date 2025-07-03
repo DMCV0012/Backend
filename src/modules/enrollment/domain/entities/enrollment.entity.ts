@@ -7,11 +7,11 @@ export class Enrollment {
   @Expose()
   enrollment_id: number; 
 
-  @Column({ type: 'int', name: 'student_rude_fk', nullable: false })
+  @Column({ type: 'bigint', name: 'student_rude_fk', nullable: false })
   @Expose()
   student_rude_fk: number;
 
-  @Column({ type: 'int', name: 'course_id_fk', nullable: false })
+  @Column({ type: 'bigint', name: 'course_id_fk', nullable: false })
   @Expose()
   course_id_fk: number;
 
@@ -23,7 +23,7 @@ export class Enrollment {
   @Expose()
   enrollment_date: Date; 
 
-  @CreateDateColumn({ type: 'text', name: 'enrollment_status', default: 'active', nullable: false })
+  @Column({ type: 'varchar', length: 20, name: 'enrollment_status', default: 'Active' })
   @Expose()
   enrollment_status: string;
 }

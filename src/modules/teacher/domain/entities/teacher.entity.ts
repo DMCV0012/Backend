@@ -32,15 +32,19 @@ export class Teacher {
   @Expose()
   email: string; // correo electrónico del profesor
 
-  @Column({ type: 'int', name: 'phone' })
+  @Column({ type: 'varchar', length: 20, name: 'phone', nullable: true })
   @Expose()
-  phone: number; // número de teléfono del profesor
+  phone: string;
 
   @CreateDateColumn({ type: 'date', name: 'hire_date', default: () => 'now()' })
   @Expose()
   hire_date: Date; // fecha de contratación del profesor
 
-  @Column({ type: 'int', name: 'salary'})
+  @Column({ type: 'decimal', precision: 10, scale: 2, name: 'salary', nullable: true })
   @Expose()
-  salary: number; // salario del profesor
+  salary: number;
+
+  @Column({ type: 'bigint', name: 'user_id_fk', unique: true, nullable: true })
+  @Expose()
+  user_id_fk?: number;
 }

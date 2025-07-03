@@ -44,7 +44,11 @@ export class Student {
   @Expose()
   registration_date: Date; // fecha de registro del alumno
   
-  @Column({ type: 'text', name: 'status', default: 'activo' })
+  @Column({ type: 'text', name: 'status', default: 'Active' })
   @Expose()
   status: string; //  estado del alumno (activo, inactivo, etc.)
+
+  @Column({ type: 'bigint', name: 'user_id_fk', unique: true, nullable: true })
+  @Expose()
+  user_id_fk?: number;
 }

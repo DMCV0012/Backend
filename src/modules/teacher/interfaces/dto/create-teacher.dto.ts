@@ -34,8 +34,8 @@ export class CreateTeacherDto {
   address: string;
 
   @ApiProperty({ example: '77712345', description: 'Número de teléfono del profesor', required: false })
-  @IsNumber({}, { message: 'El teléfono debe ser un numero de texto' })
-  phone: number;
+  @IsString({ message: 'El teléfono debe ser una cadena de texto' })
+  phone: string;
 
   @ApiProperty({ example: 'juan.perez@example.com', description: 'Correo electrónico del profesor (debe ser único)', required: false })
   @IsEmail({}, { message: 'El email debe ser una dirección de correo electrónico válida' })

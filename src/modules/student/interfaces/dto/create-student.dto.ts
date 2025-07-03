@@ -48,7 +48,8 @@ export class CreateStudentDto {
   email: string;
 
   @ApiProperty({ example: 'Active', description: 'Estado del estudiante', required: false })
+  @IsNotEmpty({ message: 'El estado es obligatorio' })
   @IsString({ message: 'El estado debe ser una cadena de texto' })
   @IsIn(['Active', 'Inactive', 'Graduated', 'Withdrawn'], { message: 'Estado inválido' })
-  status: string;
+  status: 'Active' | 'Inactive' | 'Graduated' | 'Withdrawn';
 }

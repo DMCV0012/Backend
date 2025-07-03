@@ -10,6 +10,10 @@ import { CourseModule } from './modules/course/course.module';
 import { ClassModule } from './modules/class/class.module';
 import { EnrollmentsModule } from './modules/enrollment/enrollments.module';
 import { GradeModule } from './modules/grade/grade.module';
+import { RolesModule } from './modules/roles/roles.module';
+import { AccessTokensModule } from './modules/access_tokens/access_tokens.module';
+import { PermissionsModule } from './modules/permissions/permissions.module';
+import { RolePermissionsModule } from './modules/role_permissions/role_permissions.module';
 
 
 @Module({
@@ -24,6 +28,10 @@ import { GradeModule } from './modules/grade/grade.module';
     ClassModule,
     EnrollmentsModule,
     GradeModule,
+    RolesModule,
+    AccessTokensModule,
+    PermissionsModule,
+    RolePermissionsModule,
   ],
   controllers: [],
   providers: [],

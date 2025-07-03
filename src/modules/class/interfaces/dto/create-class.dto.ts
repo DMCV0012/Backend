@@ -20,11 +20,11 @@ export class CreateClassDto {
 
   @ApiProperty({ example: '08:00:00', description: 'Hora de inicio de la clase (HH:MM:SS)', required: false })
   @IsString({ message: 'La hora de inicio debe ser una cadena de texto' })
-  start_time: Date;
+  start_time: string; // '08:00:00'
 
   @ApiProperty({ example: '09:30:00', description: 'Hora de fin de la clase (HH:MM:SS)', required: false })
   @IsString({ message: 'La hora de fin debe ser una cadena de texto' })
-  end_time: Date;
+  end_time: string; // '09:00:00'
 
   @ApiProperty({ example: 'Lunes', description: 'Día de la semana (Ej. Lunes, Martes)', required: false })
   @IsString({ message: 'El día de la semana debe ser una cadena de texto' })
