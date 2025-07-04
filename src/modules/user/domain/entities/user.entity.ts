@@ -1,40 +1,31 @@
 import { Expose } from 'class-transformer';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
-@Entity({ name: 'users', schema: 'public' }) 
-@Unique(['username']) // Asegura que el username sea único
-@Unique(['email'])    // Asegura que el email sea único
-
+@Entity({ name: 'users', schema: 'public' })
+@Unique(['username'])
+@Unique(['email'])
 export class User {
-  @PrimaryGeneratedColumn('increment', { type: 'bigint' })
+  @PrimaryGeneratedColumn('increment', { type: 'bigint', name: 'id_users' })
   @Expose()
-  user_id: number; // Usaremos un ID autoincremental como Primary Key interna para la tabla users
+  id_users: number;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', name: 'username', unique: true })
   @Expose()
   username: string;
 
-  @Column({ type: 'text', name: 'password_hash' }) // Renombramos la columna en la BD
+  @Column({ type: 'text', name: 'password_hash' })
   @Expose()
   password_hash: string;
 
-  @Column({ type: 'text', name: 'email'})
+  @Column({ type: 'text', name: 'email', unique: true })
   @Expose()
   email: string;
 
-  @Column({ type: 'bigint', name: 'role_id', nullable: true })
-  @Expose()
-  role_id: number;
-
-  @Column({ type: 'boolean', name: 'active', default: true })
-  @Expose()
-  active: boolean;
-
   @CreateDateColumn({ type: 'timestamptz', name: 'created_at', default: () => 'now()' })
   @Expose()
-  create_at: Date;
+  created_at: Date;
 
-  @Column({ type: 'timestamptz', name: 'last_login' })
+  @Column({ type: 'timestamptz', name: 'last_login', nullable: true })
   @Expose()
-  last_login: Date;
+  last_login?: Date;
 }

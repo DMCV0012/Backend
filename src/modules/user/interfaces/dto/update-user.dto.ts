@@ -1,32 +1,29 @@
 // users/dto/update-user.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString, IsEmail, IsBoolean, IsIn } from 'class-validator';
+import { IsOptional, IsString, IsEmail, MinLength, MaxLength, IsDateString } from 'class-validator';
 
 export class UpdateUserDto {
-  @ApiProperty({ example: 'nuevo.usuario', description: 'Nuevo nombre de usuario', required: false })
+  @ApiProperty({ example: 'john.doe.updated', description: 'Nuevo nombre de usuario único', required: false })
   @IsOptional()
   @IsString({ message: 'El nombre de usuario debe ser una cadena de texto' })
+  @MinLength(3, { message: 'El nombre de usuario debe tener al menos 3 caracteres' })
+  @MaxLength(50, { message: 'El nombre de usuario no puede exceder los 50 caracteres' })
   username?: string;
 
-  @ApiProperty({ example: 'nuevaContraseñaSegura456', description: 'Nueva contraseña del usuario', required: false })
+  @ApiProperty({ example: 'NewSecurePassword456!', description: 'Nueva contraseña del usuario (se recomienda un endpoint separado para esto)', format: 'password', required: false })
   @IsOptional()
   @IsString({ message: 'La contraseña debe ser una cadena de texto' })
-  password_hash?: string; // La contraseña se recibe en texto plano y luego se hashea.
+  @MinLength(8, { message: 'La contraseña debe tener al menos 8 caracteres' })
+  password_hash?: string; // Similar al Create DTO, esto sería el nuevo password antes del hash.
 
-  @ApiProperty({ example: 'nuevo.email@example.com', description: 'Nuevo correo electrónico del usuario', required: false })
+  @ApiProperty({ example: 'john.doe.new@example.com', description: 'Nuevo correo electrónico único del usuario', required: false })
   @IsOptional()
-  @IsEmail({}, { message: 'El email debe ser una dirección de correo electrónico válida' })
-  @IsString({ message: 'El email debe ser una cadena de texto' })
+  @IsEmail({}, { message: 'El correo electrónico debe ser una dirección de correo válida' })
+  @MaxLength(100, { message: 'El correo electrónico no puede exceder los 100 caracteres' })
   email?: string;
 
-  @ApiProperty({ example: 'Administrator', description: 'Nuevo rol del usuario', required: false })
-  @IsString({ message: 'El rol debe ser una cadena de texto' })
-  @IsIn(['Administrator', 'Teacher', 'Student', 'Secretary', 'Staff'], { message: 'Rol inválido' })
+  @ApiProperty({ example: '2025-07-03T22:00:00Z', description: 'Última vez que el usuario inició sesión (formato ISO 8601)', required: false })
   @IsOptional()
-  role_user?: 'Administrator' | 'Teacher' | 'Student' | 'Secretary' | 'Staff';
-
-  @ApiProperty({ example: false, description: 'Estado activo del usuario', required: false })
-  @IsBoolean({ message: 'Activo debe ser un valor booleano' })
-  @IsOptional()
-  active?: boolean;
+  @IsDateString({}, { message: 'La fecha de último inicio de sesión debe ser una fecha ISO 8601 válida' })
+  last_login?: Date;
 }

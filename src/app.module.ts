@@ -11,9 +11,15 @@ import { ClassModule } from './modules/class/class.module';
 import { EnrollmentsModule } from './modules/enrollment/enrollments.module';
 import { GradeModule } from './modules/grade/grade.module';
 import { RolesModule } from './modules/roles/roles.module';
+import { TokensModule } from './modules/tokens/tokens.module';
+import { RolePermissionsModule } from './modules/role_permissions/role_permissions.module';
+import { PermissionsModule } from './modules/permissions/permissions.module';
+import { UserRolesModule } from './modules/user_roles/user_roles.module';
 import { AccessTokensModule } from './modules/access_tokens/access_tokens.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
 import { RolePermissionsModule } from './modules/role_permissions/role_permissions.module';
+import { UserModule } from './modules/user/user.module';
+import { RolesModule } from './modules/roles/roles.module';
 
 
 @Module({
@@ -32,6 +38,8 @@ import { RolePermissionsModule } from './modules/role_permissions/role_permissio
     AccessTokensModule,
     PermissionsModule,
     RolePermissionsModule,
+    UserRolesModule,
+    TokensModule,
   ],
   controllers: [],
   providers: [],
