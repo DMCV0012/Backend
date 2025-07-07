@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { typeOrmConfig } from './config/database.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './modules/user/user.module';
 import { StudentModule } from './modules/student/student.module';
 import { TeacherModule } from './modules/teacher/teacher.module';
 import { SubjectModule } from './modules/subject/subject.module';
@@ -15,12 +14,7 @@ import { TokensModule } from './modules/tokens/tokens.module';
 import { RolePermissionsModule } from './modules/role_permissions/role_permissions.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
 import { UserRolesModule } from './modules/user_roles/user_roles.module';
-import { AccessTokensModule } from './modules/access_tokens/access_tokens.module';
-import { PermissionsModule } from './modules/permissions/permissions.module';
-import { RolePermissionsModule } from './modules/role_permissions/role_permissions.module';
 import { UserModule } from './modules/user/user.module';
-import { RolesModule } from './modules/roles/roles.module';
-
 
 @Module({
   imports: [
@@ -35,7 +29,6 @@ import { RolesModule } from './modules/roles/roles.module';
     EnrollmentsModule,
     GradeModule,
     RolesModule,
-    AccessTokensModule,
     PermissionsModule,
     RolePermissionsModule,
     UserRolesModule,
