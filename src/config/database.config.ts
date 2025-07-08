@@ -7,6 +7,11 @@ import { Course } from '../modules/course/domain/entities/course.entity';
 import { Class } from '../modules/class/domain/entities/class.entity';
 import { Enrollment } from '../modules/enrollment/domain/entities/enrollment.entity';
 import { Grade } from '../modules/grade/domain/entities/grade.entity';
+import { Role } from '../modules/roles/domain/entities/roles.entity';
+import { RolePermissions } from 'src/modules/role_permissions/domain/entities/role_permissions.entity';
+import { Permission } from 'src/modules/permissions/domain/entities/permission.entity';
+import { Token  } from 'src/modules/tokens/domain/entities/tokens.entity';
+import { UserRoles } from 'src/modules/user_roles/domain/entities/user_roles.entity';
 
 export function typeOrmConfig(): TypeOrmModuleOptions {
     return {
@@ -26,6 +31,11 @@ export function typeOrmConfig(): TypeOrmModuleOptions {
             Course,
             Enrollment,
             Grade,
+            Role,
+            RolePermissions,
+            Permission,
+            Token,
+            UserRoles,
         ],
         synchronize: process.env.DB_SYNCHRONIZE === 'true',
     };

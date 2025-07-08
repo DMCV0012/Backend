@@ -2,11 +2,11 @@ import { Expose } from 'class-transformer';
 import { Column, Entity, PrimaryColumn, CreateDateColumn, Unique } from 'typeorm';
 
 @Entity({ name: 'student', schema: 'public' }) 
-@Unique(['student_ci', 'email'])
+@Unique(['student_ci', 'email']) // student_ci y email deben ser únicos, pero la PK es student_rude
 export class Student {
-  @PrimaryColumn({ type: 'int' ,name: 'student_rude' })
+  @PrimaryColumn({ type: 'int', name: 'student_rude' })
   @Expose()
-  student_rude: number; // RUDE del alumno
+  student_rude: number; // RUDE del alumno (único por ser PK)
 
   @Column({ type: 'int', name: 'student_ci'})
   @Expose()

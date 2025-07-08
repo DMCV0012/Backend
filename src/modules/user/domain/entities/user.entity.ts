@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
-@Entity({ name: 'users', schema: 'public' })
+@Entity('user')
 @Unique(['username'])
 @Unique(['email'])
 export class User {
